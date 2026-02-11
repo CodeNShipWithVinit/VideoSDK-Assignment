@@ -1,40 +1,29 @@
 import { useState } from "react";
-import { MeetingProvider } from "@videosdk.live/react-sdk";
-import { AUTH_TOKEN, ROOMS } from "./config";
-import RoomView from "./components/RoomView";
+import NormalMode from "./components/NormalMode";
+import RelayMode from "./components/RelayMode";
 
 export default function App() {
-  const [meetingId, setMeetingId] = useState(null);
+  const [mode, setMode] = useState(null);
 
-  return (
-    <div>
-      {!meetingId && (
-        <>
-          <h2>Join a Room</h2>
-          <button onClick={() => setMeetingId(ROOMS.ROOM_A)}>
-            Join Room A
-          </button>
-          <button onClick={() => setMeetingId(ROOMS.ROOM_B)}>
-            Join Room B
-          </button>
-        </>
-      )}
+  if (!mode) {
+    return (
+      <div style={{ padding: 20 }}>
+        <h2>VideoSDK Room Switching Demo</h2>
 
-      {meetingId && (
-        <MeetingProvider
-          key={meetingId}
-          config={{
-            meetingId,
-            micEnabled: true,
-            webcamEnabled: true,
-            name: "React User"
-          }}
-          token={AUTH_TOKEN}
-          joinWithoutUserInteraction
-        >
-          <RoomView  meetingId={meetingId} onSwitchRoom={setMeetingId} />
-        </MeetingProvider>
-      )}
-    </div>
-  );
+        <button onClick={() => setMode("normal")}>
+          Normal Room Switching
+        </button>
+
+        <button onClick={() => setMode("relay")}>
+          Media Relay Mode
+        </button>
+      </div>
+    );
+  }
+
+  if (mode === "normal") {
+    return <NormalMode goBack={() => setMode(null)} />;
+  }
+
+  return <RelayMode goBack={() => setMode(null)} />;
 }
