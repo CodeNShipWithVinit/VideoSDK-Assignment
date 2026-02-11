@@ -1,0 +1,27 @@
+body {
+  font-family: sans-serif;
+  background: #0f172a;
+  color: white;
+}
+
+.container {
+  padding: 20px;
+}
+
+.controls button,
+.relay button {
+  margin-right: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.grid {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.tile video {
+  width: 300px;
+  border-radius: 8px;
+}
