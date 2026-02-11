@@ -168,22 +168,13 @@ Issue: Meeting ID empty error
 Cause: Provider mounted before room selection
 Fix: Conditional rendering after room selection
 
-🔍 Key Differences — Switching vs Relay
-Feature	Normal Switching	Media Relay
-Active meetings	One	Two simultaneously
-Leave current room	Yes	No
-Media visible in both rooms	No	Yes
-CPU usage	Low	Higher
-Complexity	Simple	Advanced
-Real-time presence in two rooms	Not possible	Possible
+🔍 Key Differences — Normal room switching and media relay differ mainly in how meetings and media streams are handled. In normal switching, only one meeting is active at a time, so the user must leave the current room before joining another. This keeps CPU usage low and the implementation simple, but media is visible in only one room and real-time presence in multiple rooms is not possible. In contrast, media relay keeps two meetings active simultaneously, allowing the user’s audio and video to appear in both rooms at the same time. This enables real-time presence across rooms, but it increases CPU usage and adds implementation complexity because the application must manage multiple connections and stream forwarding.
+
+
 🧠 Conceptual Difference
-Normal Switching
+Normal Switching- User moves between rooms.
 
-User moves between rooms.
-
-Media Relay
-
-User acts like a broadcaster sending the same stream to multiple rooms.
+Media Relay-User acts like a broadcaster sending the same stream to multiple rooms.
 
 This demonstrates multi-room publishing behavior under browser WebRTC limitations.
 
