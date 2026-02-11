@@ -91,6 +91,15 @@ Stability optimization: encoderConfig: "h360p_15fps"
 
 ------------------------------------------------------------------------
 
+# Demo showcasing:
+
+1)Normal Room Switching.
+2)Room switching using Media Relay.
+
+Video Link- https://drive.google.com/drive/u/0/folders/17aHDVCbh48UT2Qp2PcK4dDihUJe7HqQM
+
+------------------------------------------------------------------------
+
 # ⚠️ Limitations & Challenges
 
 Browser WebRTC constraint: Media must be encoded twice → Higher CPU
